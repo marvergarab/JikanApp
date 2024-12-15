@@ -52,6 +52,7 @@ dependencies {
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
     implementation(libs.androidx.constraintlayout)
+    implementation(libs.glide)
 
     api(libs.retrofit)
     implementation(libs.kotlinx.serialization.json)

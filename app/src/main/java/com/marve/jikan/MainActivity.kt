@@ -47,7 +47,7 @@ class MainActivity : ComponentActivity() {
         viewModel.resultAnimeSearch.observe(this) { results ->
             searchProgressBar.visibility = View.GONE
             recyclerView.layoutManager = LinearLayoutManager(this)
-            recyclerView.adapter = AnimeItemAdapter(results?.data)
+            recyclerView.adapter = AnimeItemAdapter(this@MainActivity, results?.data)
 
             Log.d("Anime", "resultado ${results?.pagination?.currentPage}")
         }
