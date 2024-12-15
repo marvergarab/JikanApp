@@ -36,7 +36,7 @@ object RetrofitBuilder {
 
 
 object AnimeClient {
-    val animeService: AnimeServiceI by lazy {
-        RetrofitBuilder.getRetrofit().create(AnimeServiceI::class.java)
+    val animeService: AnimeService by lazy {
+        RetrofitBuilder.getRetrofit().create(AnimeService::class.java)
     }
 }

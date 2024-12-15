@@ -13,32 +13,18 @@ import kotlinx.coroutines.*
 
 
 class MainViewModel : ViewModel() {
+    var resultAnimeSearch: MutableLiveData<ApiAnimeSearchModel?> = MutableLiveData()
 
-    private var debounceJob: Job? = null
-    private val _query = MutableLiveData<String?>()
-
-    val results: LiveData<ApiAnimeSearchModel?> = _query.switchMap { query ->
-        liveData{
+    fun searchAnimeList(qString: String)  {
+        viewModelScope.launch {
             try {
-                val response = AnimeClient.animeService.getAnimeList(searchStr = query)
-                if (response.isSuccessful)
-                    emit(response.body())
-                else
-                    emit(null)
+                val response = AnimeClient.animeService.getAnimeList(searchStr = qString)
+                resultAnimeSearch.value = if (response.isSuccessful) response.body() else null
             }
             catch (e: Exception) {
                 Log.w("MainViewModel", "Exception: ${e.message}")
-                emit(null)
+                resultAnimeSearch.value = null
             }
-        }
-    }
-
-    fun onQueryChanged(newText: String) {
-        debounceJob?.cancel()
-        debounceJob = viewModelScope.launch {
-            delay(1000) // Aplica el debounce
-            val text = if (newText.isEmpty()) null else newText
-            _query.postValue(text)
         }
     }
 }
