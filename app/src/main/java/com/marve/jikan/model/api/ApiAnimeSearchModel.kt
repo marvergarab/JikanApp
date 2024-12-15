@@ -6,7 +6,7 @@ import kotlinx.serialization.Serializable
 @Serializable()
 data class ApiAnimeSearchModel(
     @SerialName("pagination")   val pagination: ApiAnimeSearchPaginationModel,
-    @SerialName("data")         val data:       List<ApiAnimeSearchDataModel>
+    @SerialName("data")         val data:       List<ApiAnimeSearchDataModel> = listOf()
 ) {
 
     @Serializable()

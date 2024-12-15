@@ -1,6 +1,7 @@
 package com.marve.jikan.view.adapters
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,12 +9,12 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.marve.jikan.model.api.ApiAnimeSearchModel
+import com.marve.jikan.model.api.ApiAnimeSearchModel.ApiAnimeSearchDataModel
 import com.marve.jikan.R
-import android.util.Log
+
 
 class AnimeItemAdapter(private val context: Context,
-                       private val list: List<ApiAnimeSearchModel.ApiAnimeSearchDataModel>?)
+                       private var list: List<ApiAnimeSearchDataModel>)
         : RecyclerView.Adapter<AnimeItemAdapter.AnimeItemViewHolder>() {
 
     class AnimeItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -41,7 +42,7 @@ class AnimeItemAdapter(private val context: Context,
         val currentItem = list?.get(position)
 
         Glide.with(context)
-            .load(currentItem?.images?.webp?.largeImageUrl)
+            .load(currentItem?.images?.webp?.imageUrl)
             .into(holder.ivPoster)
 
 
@@ -52,6 +53,16 @@ class AnimeItemAdapter(private val context: Context,
 
     override fun getItemCount(): Int {
         return list?.size ?: 0
+    }
+
+    fun addData(items: List<ApiAnimeSearchDataModel>) {
+        list += items
+        notifyDataSetChanged()
+    }
+
+    fun clearData() {
+        list = listOf()
+        notifyDataSetChanged()
     }
 
 
