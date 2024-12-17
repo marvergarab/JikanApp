@@ -36,7 +36,6 @@
         android:layout_marginStart="5dp"
         android:textSize="20sp"
         android:textStyle="bold"
-        android:autoSizeTextType="uniform"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0"
         app:layout_constraintStart_toEndOf="@+id/iv_animeImg"
@@ -48,7 +47,6 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:textSize="16sp"
-        android:autoSizeTextType="uniform"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0"
         app:layout_constraintStart_toStartOf="@+id/tv_title"
@@ -68,7 +66,6 @@
         app:layout_constraintTop_toBottomOf="@+id/tv_subtitle"
         app:layout_constraintBottom_toTopOf="@id/v_div"
         app:layout_constraintVertical_bias="0.0"
-        android:autoSizeTextType="uniform"
         tools:text="Fifteen years after a cataclysmic event known as the Second Impact, the world faces a new threat: monstrous celestial beings called Angels invade Tokyo-3 one by one. Mankind is unable to defend themselves against the Angels despite utilizing their most advanced munitions and military tactics. The only hope for human salvation rests in the hands of NERV, a mysterious organization led by the cold Gendou Ikari. NERV operates giant humanoid robots dubbed Evangelions to combat the Angels with state-of-the-art advanced weaponry and protective barriers known as Absolute Terror Fields." />
 
     <View

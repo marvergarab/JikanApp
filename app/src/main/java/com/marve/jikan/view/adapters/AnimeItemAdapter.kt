@@ -1,5 +1,6 @@
 package com.marve.jikan.view.adapters
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.util.Log
 import android.view.LayoutInflater
@@ -56,13 +57,17 @@ class AnimeItemAdapter(private val context: Context,
     }
 
     fun addData(items: List<ApiAnimeSearchDataModel>) {
+        val n = list.size
+
         list += items
-        notifyDataSetChanged()
+        notifyItemRangeInserted(n, items.size)
     }
 
     fun clearData() {
+        val n = list.size
+
         list = listOf()
-        notifyDataSetChanged()
+        notifyItemRangeRemoved(0, n)
     }
 
 

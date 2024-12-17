@@ -37,8 +37,10 @@ class MainViewModel : ViewModel() {
         viewModelScope.launch {
             try {
                 var page: Int? = null
-                if (pageInfo != null && pageInfo?.hasNextPage != null && pageInfo?.hasNextPage == false)
+                if (pageInfo != null && pageInfo?.hasNextPage != null && pageInfo?.hasNextPage == false) {
+                    isRunningQuery = false
                     return@launch
+                }
 
                 if (pageInfo?.hasNextPage == true)
                     page = pageInfo?.currentPage?.plus(1)
