@@ -1,8 +1,6 @@
 package com.marve.jikan.view.adapters
 
-import android.annotation.SuppressLint
 import android.content.Context
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -40,20 +38,20 @@ class AnimeItemAdapter(private val context: Context,
         holder: AnimeItemViewHolder,
         position: Int
     ) {
-        val currentItem = list?.get(position)
+        val currentItem = list[position]
 
         Glide.with(context)
-            .load(currentItem?.images?.webp?.imageUrl)
+            .load(currentItem.images.webp.imageUrl)
             .into(holder.ivPoster)
 
 
-        holder.tvTitle.text = currentItem?.title
-        holder.tvSubtitle.text = currentItem?.titleJapanese
-        holder.tvBody.text = currentItem?.synopsis
+        holder.tvTitle.text = currentItem.title
+        holder.tvSubtitle.text = currentItem.titleJapanese
+        holder.tvBody.text = currentItem.synopsis
     }
 
     override fun getItemCount(): Int {
-        return list?.size ?: 0
+        return list.size
     }
 
     fun addData(items: List<ApiAnimeSearchDataModel>) {
